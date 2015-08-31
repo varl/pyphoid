@@ -19,8 +19,7 @@ if args.last_one:
   print("Calling function to get last one")
 
 if args.add_url:
-  print("Got this URL: {}".format(args.add_url))
+  print("Got URL: {}".format(args.add_url))
   database = db.push(args.add_url, ())
   db.write(database, __file__)
-
 
