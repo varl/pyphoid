@@ -2,7 +2,7 @@
 
 import sys
 import argparse
-from lib import db
+from lib import db, feed
 
 parser = argparse.ArgumentParser()
 
@@ -20,6 +20,9 @@ if args.last_one:
 
 if args.add_url:
   print("Got URL: {}".format(args.add_url))
-  database = db.push(args.add_url, ())
-  db.write(database, __file__)
+  f = feed.scan(args.add_url)
+  status, result = db.add(f)
+  print("Status was {}, result: {}".format(status, result))
+
+
 

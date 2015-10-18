@@ -7,7 +7,7 @@ from datetime import datetime
 namespace = {'media': 'http://search.yahoo.com/mrss/'}
 
 Feed = namedtuple('Feed', \
-  ['url', 'title', 'files', 'last_update'])
+  ['url', 'title', 'eps', 'last_update'])
                     
 Ep = namedtuple('Ep', \
     ['title', 'url', 'description', 'thumbnail', 'publish_date'])
@@ -16,7 +16,7 @@ def scan(url):
   feed = make_feed(url)
   return Feed(url=url, \
       title=title(feed), \
-      files=eps(feed), \
+      eps=eps(feed), \
       last_update=datetime.utcnow().isoformat())
 
 def make_feed(url):
