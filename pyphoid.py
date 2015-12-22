@@ -3,7 +3,7 @@
 import sys
 import os
 import argparse
-from lib import db, feed
+from lib import feed
 from urllib import request
 
 
