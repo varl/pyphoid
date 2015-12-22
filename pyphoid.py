@@ -17,7 +17,7 @@ def download(title, eps):
     os.makedirs(title)
 
   for index, ep in enumerate(eps):
-    ep_name = os.path.join(title, ep.title+'.mp3')
+    ep_name = os.path.join(title, ep.publish_date+'_'+ep.title+'.mp3')
 
     if not os.path.exists(ep_name):
       print('({}/{}) => {}'.format(index, total, ep_name))
@@ -40,19 +40,16 @@ if __name__ == '__main__':
   args = parser.parse_args()
 
   if args.last_only:
-    print("Getting the last episode on URL: {}".format(args.last_one))
-    f = feed.url(args.last_one)
-    
-    # sort by publish date and get the last (=newest) item
-    last_ep = sorted(f.eps, key=lambda x: x.publish_date)[-1]
+    print("Getting the last episode on URL: {}".format(args.last_only))
+    f = feed.url(args.last_only)
+    eps_sorted = sorted(f.eps, key=lambda x: x.publish_date, reverse=True)
 
-    status = download(f.title, [last_ep])
+    status = download(f.title, [eps_sorted[-1]])
 
   if args.download:
     print("Catching up with podcast on URL: {}".format(args.download))
     f = feed.url(args.download)
 
-    print('Downloading episodes...')
     status = download(f.title, f.eps)
 
   print('All good in the hood? {}'.format(status))
