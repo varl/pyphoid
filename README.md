@@ -5,6 +5,7 @@ Pyphoid requires URLs to feed.
 
 # Installation
 ```
+$ git clone git@github.com:varl/pyphoid.git /path/to/pyphoid
 $ chmod +x /path/to/pyphoid.py
 $ ln -s /path/to/pyphoid.py ~/bin/pyphoid
 ```
