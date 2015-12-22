@@ -14,7 +14,7 @@ $ ln -s /path/to/pyphoid.py ~/bin/pyphoid
 ```
 $ pyphoid -h
 
-usage: pyphoid [-h] [-d DOWNLOAD] [-l LAST_ONE]
+usage: pyphoid [-h] [-d DOWNLOAD] [-l LAST_ONLY]
 
 optional arguments:
   -h, --help            show this help message and exit
