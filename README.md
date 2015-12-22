@@ -10,6 +10,15 @@ $ ln -s /path/to/pyphoid.py ~/bin/pyphoid
 ```
 
 # Usage
+```
+$ pyphoid -h
+usage: pyphoid [-h] [-d DOWNLOAD] [-l LAST_ONE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DOWNLOAD, --download DOWNLOAD
+  -l LAST_ONE, --last-one LAST_ONE
+```
 ## Two modes
 
 ### hmm i'm not sure about this podcast
