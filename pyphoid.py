@@ -49,8 +49,8 @@ if __name__ == '__main__':
     status = download(f.title, [last_ep])
 
   if args.download:
-    print("Catching up with podcast on URL: {}".format(args.add_url))
-    f = feed.url(args.add_url)
+    print("Catching up with podcast on URL: {}".format(args.download))
+    f = feed.url(args.download)
 
     print('Downloading episodes...')
     status = download(f.title, f.eps)
