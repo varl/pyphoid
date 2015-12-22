@@ -31,7 +31,7 @@ Getting the last episode on URL: http://feeds.feedburner.com/freakonomicsradio
 All good in the hood? True
 ```
 
-### b) `--download`: i <3 this podcast
+### `--download`: i <3 this podcast
 ```
 $ pyphoid.py -d http://feeds.feedburner.com/freakonomicsradio
 
