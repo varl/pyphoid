@@ -18,7 +18,7 @@ usage: pyphoid [-h] [-d DOWNLOAD] [-l LAST_ONE]
 optional arguments:
   -h, --help            show this help message and exit
   -d DOWNLOAD, --download DOWNLOAD
-  -l LAST_ONE, --last-one LAST_ONE
+  -l LAST_ONLY, --last-only LAST_ONLY
 ```
 ## Two modes
 

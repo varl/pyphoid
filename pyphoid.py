@@ -35,7 +35,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
 
   parser.add_argument("-d", "--download")
-  parser.add_argument("-l", "--last-one")
+  parser.add_argument("-l", "--last-only")
 
   args = parser.parse_args()
 
