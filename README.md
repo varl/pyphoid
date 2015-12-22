@@ -3,20 +3,27 @@ Pyphoid
 
 Pyphoid requires URLs to feed.
 
-# Two modes
-
-## hmm i'm not sure about this podcast
+# Installation
 ```
-$ python3 pyphoid.py -l http://feeds.feedburner.com/freakonomicsradio
+$ chmod +x /path/to/pyphoid.py
+$ ln -s /path/to/pyphoid.py ~/bin/pyphoid
+```
+
+# Usage
+## Two modes
+
+### hmm i'm not sure about this podcast
+```
+$ pyphoid -l http://feeds.feedburner.com/freakonomicsradio
 
 Getting the last episode on URL: http://feeds.feedburner.com/freakonomicsradio
 (0/1) => Freakonomics Radio/Is Migration a Basic Human Right?.mp3
 All good in the hood? True
 ```
 
-## i <3 this podcast
+### i <3 this podcast
 ```
-$ python3 pyphoid.py -d http://feeds.feedburner.com/freakonomicsradio
+$ pyphoid.py -d http://feeds.feedburner.com/freakonomicsradio
 
 Catching up with podcast on URL: http://feeds.feedburner.com/freakonomicsradio
 Downloading episodes...
