@@ -17,7 +17,6 @@ def download(title, eps):
     os.makedirs(title)
 
   for index, ep in enumerate(eps):
-    print('{}, {}'.format(ep.title, title))
     ep_name = os.path.join(title, ep.title+'.mp3')
 
     if not os.path.exists(ep_name):
