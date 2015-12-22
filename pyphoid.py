@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
   args = parser.parse_args()
 
-  if args.last_one:
+  if args.last_only:
     print("Getting the last episode on URL: {}".format(args.last_one))
     f = feed.url(args.last_one)
     
