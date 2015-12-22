@@ -22,7 +22,7 @@ optional arguments:
 ```
 ## Two modes
 
-### hmm i'm not sure about this podcast
+### `--last-only`: hmm i'm not sure about this podcast
 ```
 $ pyphoid -l http://feeds.feedburner.com/freakonomicsradio
 
@@ -31,7 +31,7 @@ Getting the last episode on URL: http://feeds.feedburner.com/freakonomicsradio
 All good in the hood? True
 ```
 
-### i <3 this podcast
+### b) `--download`: i <3 this podcast
 ```
 $ pyphoid.py -d http://feeds.feedburner.com/freakonomicsradio
 
