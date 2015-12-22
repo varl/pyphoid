@@ -4,67 +4,85 @@ import urllib.request as req
 from collections import namedtuple
 from datetime import datetime
 
-namespace = {'media': 'http://search.yahoo.com/mrss/'}
+
+"""
+Feed and Ep structures
+"""
 
 Feed = namedtuple('Feed', \
-  ['url', 'title', 'eps', 'last_update'])
+  ['title', 'eps'])
                     
 Ep = namedtuple('Ep', \
-    ['title', 'url', 'description', 'thumbnail', 'publish_date'])
+    ['title', 'url', 'description', 'publish_date'])
 
-def scan(url):
-  feed = make_feed(url)
-  return Feed(url=url, \
-      title=title(feed), \
-      eps=eps(feed), \
-      last_update=datetime.utcnow().isoformat())
+"""
+Interface
+"""
+def url(url):
+  return make(xml(url))
 
-def make_feed(url):
+
+"""
+Internal
+"""
+def make(src):
+  return Feed(title=title(src), \
+      eps=eps(src))
+
+def xml(url):
   with req.urlopen(url) as resp:
     return ET.fromstring(resp.read())
 
-def title(feed):
-  return feed.find('channel').find('title').text
+def title(src):
+  return find('channel', src).find('title').text
 
-def eps(feed):
+def eps(src):
   return list(map(extract_ep, \
-      feed.find('channel').findall('item')))
+      find('channel', src).findall('item')))
 
-def extract_ep(el):
-  try:
-    title = el.find('title').text.strip('\n')
-  except AttributeError:
-    title = None
 
-  try:
-    url = el.find('media:content', namespace).get('url', None)
-  except AttributeError:
-    url = None
+"""
+Helpers
+"""
+def extract_ep(src):
+  title = find_text('title', src)
 
-  try:
-    thumbnail = el.find('media:thumbnail', namespace).get('url', None) 
-  except AttributeError:
-    thumbnail = None
+  description = find_text('media:description', src)
+  if description is None:
+    description = find_text('description', src)
 
-  try:
-    description = el.find('media:description', namespace).text.strip('\n')
-  except AttributeError:
-    description = el.find('description').text.strip('\n')
-  else:
-    description = None
+  url = find_url('media:content', src)
+  if url is None:
+    url = find_url('enclosure', src)
 
-  try:
-    publish_date = el.find('pubDate').text.strip('\n')
-  except AttributeError:
-    publish_date = None
-
+  publish_date = find_text('pubDate', src)
   pubdate = convert(publish_date)
 
   return Ep(title=title, \
             url=url, \
             description=description, \
-            thumbnail=thumbnail,
             publish_date=pubdate.isoformat())
 
 def convert(date):
   return datetime.strptime(date, '%a, %d %b %Y %H:%M:%S %z')
+
+def find(attr, element):
+  namespace = {
+    'media': 'http://search.yahoo.com/mrss/'
+  }
+
+  try:
+    if len(attr.split(':')) > 1:
+      return element.find(attr, namespace)
+    else:
+      return element.find(attr)
+
+  except AttributeError:
+    return None
+
+def find_text(attr, element):
+  return find(attr, element).text.strip('\n')
+
+def find_url(attr, element):
+  return find(attr, element).get('url', None)
+
