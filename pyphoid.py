@@ -42,6 +42,19 @@ if __name__ == '__main__':
     print("Using interactive mode to retrieve episodes on URL: {}".format(args.url))
     status = dl.download(directory, f.title, f.eps, args.interactive)
 
+  if  not args.output_dir \
+      and not args.interactive \
+      and not args.last_only \
+      and not args.download:
+        print("Attempting to parse feed URL: {}".format(args.url))
+        src = feed.xml(args.url)
+        eps = sorted(feed.eps(src), key=lambda x: x.publish_date, reverse=False)
+        for ep in eps:
+          print('{} => {}'.format(ep.publish_date, ep.title))
+
+        status = True
+
+
   print('All good in the hood? {}'.format(status))
 
 

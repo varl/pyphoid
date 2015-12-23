@@ -61,10 +61,11 @@ def extract_ep(src):
   return Ep(title=title, \
             url=url, \
             description=description, \
-            publish_date=pubdate.isoformat())
+            publish_date=pubdate)
 
 def convert(date):
-  return datetime.strptime(date, '%a, %d %b %Y %H:%M:%S %z')
+  d = datetime.strptime(date, '%a, %d %b %Y %H:%M:%S %z')
+  return datetime.strftime(d, '%Y-%m-%d')
 
 def find(attr, element):
   namespace = {
