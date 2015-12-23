@@ -23,10 +23,11 @@ def download(title, eps, interactive=False):
     ep_name = os.path.join(title, ep.publish_date+'_'+ep.title+'.mp3')
 
     if not os.path.exists(ep_name):
+      print('({}/{}) => {}'.format(index, total, ep_name))
+
       if interactive:
         print('')
         print('Title:\t\t{}'.format(ep.title))
-        print('--------')
         print('Published:\t{}'.format(ep.publish_date))
         print('URL:\t\t{}'.format(ep.url))
         print('Description:\t{}'.format(ep.description))
@@ -34,13 +35,11 @@ def download(title, eps, interactive=False):
 
         confirmation = respond('Download (y/n)? ')
         if confirmation:
-          print('({}/{}) => {}'.format(index, total, ep_name))
           request.urlretrieve(ep.url, ep_name)
         else:
           continue
 
       else:
-        print('({}/{}) => {}'.format(index, total, ep_name))
         request.urlretrieve(ep.url, ep_name)
 
     else:
@@ -52,6 +51,7 @@ def download(title, eps, interactive=False):
 
 def respond(message):
   '''Make the user answer a y/n question'''
+
   valid = False
   response = False
 
@@ -63,6 +63,8 @@ def respond(message):
     elif r.lower() == 'n':
       valid = True
       response = False
+    else:
+      pass
 
   return response
 

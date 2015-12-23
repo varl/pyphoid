@@ -5,48 +5,46 @@ from collections import namedtuple
 from datetime import datetime
 
 
-"""
-Feed and Ep structures
-"""
-
+# struct for feeds and eps
 Feed = namedtuple('Feed', \
   ['title', 'eps'])
                     
 Ep = namedtuple('Ep', \
     ['title', 'url', 'description', 'publish_date'])
 
-"""
-Interface
-"""
+
+
 def url(url):
+  '''Takes an URL and returns a Feed'''
   return make(xml(url))
 
 
-"""
-Internal
-"""
 def make(src):
+  '''Takes raw XML and constructs a new Feed'''
   return Feed(title=title(src), \
       eps=eps(src))
 
+
 def xml(url):
+  '''Takes a URL and returns the raw response, hopefully XML'''
   with req.urlopen(url) as resp:
     return ET.fromstring(resp.read())
 
 
-
 def title(src):
+  '''Finds and returns the title of a podcast'''
   return find('channel', src).find('title').text
 
+
 def eps(src):
+  '''Returns a list of Ep(isode)s'''
   return list(map(extract_ep, \
       find('channel', src).findall('item')))
 
 
-"""
-Helpers
-"""
+
 def extract_ep(src):
+  '''Extracts all episodes within src ET-object'''
   title = find_text('title', src)
 
   description = find_text('media:description', src)
