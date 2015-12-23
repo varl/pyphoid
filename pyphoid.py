@@ -34,22 +34,21 @@ Main logic
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
 
-  parser.add_argument("-d", "--download")
-  parser.add_argument("-l", "--last-only")
+  parser.add_argument('url', help='URL to the podcast feed (RSS/XML)')
+  parser.add_argument('-d', '--download', action='store_true')
+  parser.add_argument('-l', '--last-only', action='store_true')
 
   args = parser.parse_args()
 
-  if args.last_only:
-    print("Getting the last episode on URL: {}".format(args.last_only))
-    f = feed.url(args.last_only)
-    eps_sorted = sorted(f.eps, key=lambda x: x.publish_date, reverse=True)
+  f = feed.url(args.url)
 
+  if args.last_only:
+    print("Getting the last episode on URL: {}".format(args.url))
+    eps_sorted = sorted(f.eps, key=lambda x: x.publish_date, reverse=True)
     status = download(f.title, [eps_sorted[-1]])
 
   if args.download:
-    print("Catching up with podcast on URL: {}".format(args.download))
-    f = feed.url(args.download)
-
+    print("Catching up with podcast on URL: {}".format(args.url))
     status = download(f.title, f.eps)
 
   print('All good in the hood? {}'.format(status))

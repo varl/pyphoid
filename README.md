@@ -14,16 +14,19 @@ $ ln -s /path/to/pyphoid.py ~/bin/pyphoid
 ```
 $ pyphoid -h
 
-usage: pyphoid [-h] [-d DOWNLOAD] [-l LAST_ONLY]
+usage: pyphoid [-h] [-d] [-l] url
+
+positional arguments:
+  url              URL to the podcast feed (RSS/XML)
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -d DOWNLOAD, --download DOWNLOAD
-  -l LAST_ONLY, --last-only LAST_ONLY
+  -h, --help       show this help message and exit
+  -d, --download
+  -l, --last-only
 ```
 ## Two modes
 
-### `--last-only`: hmm i'm not sure about this podcast
+### `--last-only` hmm i'm not sure about this podcast
 ```
 $ pyphoid -l http://feeds.feedburner.com/freakonomicsradio
 
@@ -32,7 +35,7 @@ Getting the last episode on URL: http://feeds.feedburner.com/freakonomicsradio
 All good in the hood? True
 ```
 
-### `--download`: i <3 this podcast
+### `--download` i <3 this podcast
 ```
 $ pyphoid.py -d http://feeds.feedburner.com/freakonomicsradio
 
