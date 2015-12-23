@@ -31,7 +31,7 @@ optional arguments:
 $ pyphoid -l http://feeds.feedburner.com/freakonomicsradio
 
 Getting the last episode on URL: http://feeds.feedburner.com/freakonomicsradio
-(0/1) => Freakonomics Radio/Is Migration a Basic Human Right?.mp3
+(0/1) => Freakonomics Radio/2015-12-16T23:00:00-05:00_Is Migration a Basic Human Right?.mp3
 All good in the hood? True
 ```
 
@@ -39,8 +39,6 @@ All good in the hood? True
 ```
 $ pyphoid.py -d http://feeds.feedburner.com/freakonomicsradio
 
-Catching up with podcast on URL: http://feeds.feedburner.com/freakonomicsradio
-Downloading episodes...
 Catching up with podcast on URL: http://feeds.feedburner.com/freakonomicsradio
 ERR: "Freakonomics Radio/2015-12-16T23:00:00-05:00_Is Migration a Basic Human Right?.mp3" already exists
 (1/250) => Freakonomics Radio/2015-12-09T23:00:00-05:00_The Cheeseburger Diet.mp3
