@@ -25,9 +25,11 @@ def download(title, eps, interactive=False):
     if not os.path.exists(ep_name):
       if interactive:
         print('')
-        print(ep.title)
+        print('Title:\t\t{}'.format(ep.title))
         print('--------')
-        print(ep.description)
+        print('Published:\t{}'.format(ep.publish_date))
+        print('URL:\t\t{}'.format(ep.url))
+        print('Description:\t{}'.format(ep.description))
         print('--------')
 
         confirmation = respond('Download (y/n)? ')
@@ -95,9 +97,8 @@ if __name__ == '__main__':
     status = download(f.title, f.eps)
 
   if args.interactive:
-    print("I N T E R A C T I V E  M O D E")
+    print("Using interactive mode to retrieve episodes on URL: {}".format(args.url))
     status = download(f.title, f.eps, args.interactive)
-
 
   print('All good in the hood? {}'.format(status))
 
