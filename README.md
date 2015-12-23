@@ -27,7 +27,22 @@ optional arguments:
   -l, --last-only       only download the most recent episode
   -i, --interactive     pick what episodes to download (newest first)
 ```
-## Three modes
+## Four modes
+
+### parse and look
+
+Run `pyphoid` with an URL without additional flags to see which episodes are available
+and if `pyphoid` manages to parse the feed successfully.
+
+```
+$ pyphoid http://feeds.wnyc.org/radiolab
+Attempting to parse feed URL: http://feeds.wnyc.org/radiolab
+2010-09-20 => Falling
+[...]
+2015-12-18 => The Fix
+2015-12-22 => Year-End Special #1
+All good in the hood? True
+```
 
 ### `--last-only` hmm i'm not sure about this podcast
 ```
