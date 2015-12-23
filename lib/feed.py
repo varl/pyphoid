@@ -19,16 +19,16 @@ def url(url):
   return make(xml(url))
 
 
-def make(src):
-  '''Takes raw XML and constructs a new Feed'''
-  return Feed(title=title(src), \
-      eps=eps(src))
-
-
 def xml(url):
   '''Takes a URL and returns the raw response, hopefully XML'''
   with req.urlopen(url) as resp:
     return ET.fromstring(resp.read())
+
+
+def make(src):
+  '''Takes raw XML and constructs a new Feed'''
+  return Feed(title=title(src), \
+      eps=eps(src))
 
 
 def title(src):
