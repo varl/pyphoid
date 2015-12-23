@@ -14,16 +14,18 @@ $ ln -s /path/to/pyphoid.py ~/bin/pyphoid
 ```
 $ pyphoid -h
 
-usage: pyphoid [-h] [-d | -l | -i] url
+usage: pyphoid [-h] [-o OUTPUT_DIR] [-d | -l | -i] url
 
 positional arguments:
-  url                URL to the podcast feed (RSS/XML)
+  url                   URL to the podcast feed (RSS/XML)
 
-  optional arguments:
-  -h, --help         show this help message and exit
-  -d, --download     download available episodes
-  -l, --last-only    only download the most recent episode
-  -i, --interactive  pick what episodes to download (newest first)
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTPUT_DIR, --output-dir OUTPUT_DIR
+                        output directory where the podcast show will be saved
+  -d, --download        download available episodes
+  -l, --last-only       only download the most recent episode
+  -i, --interactive     pick what episodes to download (newest first)
 ```
 ## Three modes
 
