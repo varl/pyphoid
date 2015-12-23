@@ -23,6 +23,10 @@ def download(directory, title, eps, interactive=False):
   for index, ep in enumerate(eps):
     ep_name = os.path.join(cwd, ep.publish_date+'_'+ep.title+'.mp3')
 
+    if ep.url is None:
+      print('No URL for ep "{}". Skipping...'.format(ep.title))
+      continue
+
     if not os.path.exists(ep_name):
       print('({}/{}) => {}'.format(index, total, ep_name))
 
