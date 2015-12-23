@@ -47,9 +47,9 @@ def extract_ep(src):
   '''Extracts all episodes within src ET-object'''
   title = find_text('title', src)
 
-  description = find_text('media:description', src)
+  description = find_text('description', src)
   if description is None:
-    description = find_text('description', src)
+    description = find_text('media:description', src)
 
   url = find_url('media:content', src)
   if url is None:
@@ -81,8 +81,15 @@ def find(attr, element):
     return None
 
 def find_text(attr, element):
-  return find(attr, element).text.strip('\n')
+  f = find(attr, element)
+  if f is not None:
+    return f.text.strip('\n')
+  else:
+    return None
 
 def find_url(attr, element):
-  return find(attr, element).get('url', None)
-
+  f = find(attr, element)
+  if f is not None:
+    return f.get('url', None)
+  else:
+    return None
