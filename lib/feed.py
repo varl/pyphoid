@@ -64,7 +64,8 @@ def extract_ep(src):
             publish_date=pubdate)
 
 def convert(date):
-  d = datetime.strptime(date, '%a, %d %b %Y %H:%M:%S %z')
+  fmt = '%a, %d %b %Y %H:%M:%S'
+  d = datetime.strptime(date[:date.rindex(' ')], fmt)
   return datetime.strftime(d, '%Y-%m-%d')
 
 def find(attr, element):
