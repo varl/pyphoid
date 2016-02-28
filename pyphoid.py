@@ -32,7 +32,7 @@ if __name__ == '__main__':
   if args.last_only:
     print("Getting the last episode on URL: {}".format(args.url))
     eps_sorted = sorted(f.eps, key=lambda x: x.publish_date, reverse=True)
-    status = dl.download(directory, f.title, [eps_sorted[-1]])
+    status = dl.download(directory, f.title, [eps_sorted[0]])
 
   if args.download:
     print("Catching up with podcast on URL: {}".format(args.url))
