@@ -3,14 +3,14 @@ Pyphoid
 
 Pyphoid requires URLs to feed.
 
-# Installation
+## Installation
 ```
 $ git clone git@github.com:varl/pyphoid.git /path/to/pyphoid
 $ chmod +x /path/to/pyphoid.py
 $ ln -s /path/to/pyphoid.py ~/bin/pyphoid
 ```
 
-# Usage
+## Usage
 ```
 $ pyphoid -h
 
@@ -27,9 +27,9 @@ optional arguments:
   -l, --last-only       only download the most recent episode
   -i, --interactive     pick what episodes to download (newest first)
 ```
-## Four modes
+### Four modes
 
-### parse and look
+#### parse and look
 
 Run `pyphoid` with an URL without additional flags to see which episodes are available
 and if `pyphoid` manages to parse the feed successfully.
@@ -44,7 +44,7 @@ Attempting to parse feed URL: http://feeds.wnyc.org/radiolab
 All good in the hood? True
 ```
 
-### `--last-only` hmm i'm not sure about this podcast
+#### `--last-only` hmm i'm not sure about this podcast
 ```
 $ pyphoid -l http://feeds.feedburner.com/freakonomicsradio
 
@@ -53,7 +53,7 @@ Getting the last episode on URL: http://feeds.feedburner.com/freakonomicsradio
 All good in the hood? True
 ```
 
-### `--download` i <3 this podcast
+#### `--download` i <3 this podcast
 ```
 $ pyphoid -d -o /cygdrive/z/podcasts http://feeds.wnyc.org/radiolab
 
@@ -69,7 +69,7 @@ No URL for ep "The Cold War". Skipping...
 All good in the hood? True
 ```
 
-### `--interactive` i'll decide as i go
+#### `--interactive` i'll decide as i go
 
 Shows the title and some more information about the episode before choosing to download it or not.
 
@@ -89,12 +89,16 @@ Description:    Can Selling Beer Cut Down on Public Drunkenness?
 Download (y/n)?
 ```
 
-# Tests
+## Tests
 
 e.g.
 
 ```
 $ python3 lib/*_test.py
 ```
+
+## Caveats
+
+Weird timestamp? `(╯._.)╯︵ ┻━┻`
 
 /v.
