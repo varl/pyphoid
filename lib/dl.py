@@ -1,7 +1,13 @@
 #!/usr/bin/python3
 
 import os
+import re
 from urllib import request
+
+def filename(s, ext):
+    s = str(s).strip().replace(' ', '_')
+    f = re.sub(r'(?u)[^-\w]', '', s)
+    return f+'.'+ext
 
 def download(directory, title, eps, interactive=False):
   '''Downloads episodes based on the podcast name in the directory:
@@ -21,7 +27,7 @@ def download(directory, title, eps, interactive=False):
     os.makedirs(cwd)
 
   for index, ep in enumerate(eps):
-    ep_name = os.path.join(cwd, ep.publish_date+'_'+ep.title+'.mp3')
+    ep_name = os.path.join(cwd, ep.publish_date+'-'+filename(ep.title, 'mp3'))
 
     if ep.url is None:
       print('No URL for ep "{}". Skipping...'.format(ep.title))
